@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { app } from './src/app.js';
 import { db } from './src/db/config/db.config.js'
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 db.connect(error => {
     if (error) throw error
     console.log("DB 연결 성공"); 
