@@ -5,10 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "babel-node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "api-docs": "swagger-cli bundle ./src/swagger/openapi.yaml --outfile build/swagger.yaml --type yaml",
-    "prestart": "npm run api-docs"
+    "prestart": "npm run api-docs",
+    "heroku-postbuild": "npm install"
   },
   "engines": {
     "node": ">=10.0.0",
