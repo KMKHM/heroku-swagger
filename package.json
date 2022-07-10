@@ -10,6 +10,10 @@
     "api-docs": "swagger-cli bundle ./src/swagger/openapi.yaml --outfile build/swagger.yaml --type yaml",
     "prestart": "npm run api-docs"
   },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
