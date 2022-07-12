@@ -75,6 +75,26 @@
                   type: string
                   format: JWT
 
+/login/google:
+  get:
+    tags:
+      - 로그인
+    description: 구글 로그인
+    operationId: getUserToken
+    content: application/json
+    responses:
+      '200':
+        description: 구글 연동 성공 시 db에 계정 생성하고 토큰 전달
+        content:
+          application/json:
+            schema:
+              type: object
+              requried: true
+              properties:
+                jwt: 
+                  type: string
+                  format: JWT
+
 /user:
   get:
     tags:
@@ -103,7 +123,7 @@
               type: string
               example: "정상적인 토큰이 아닙니다."
 
-  put:
+  patch:
     tags:
       - 마이페이지
     summary: Update user profile by user id
@@ -154,7 +174,7 @@
         description: 변경 전 값과의 충돌
 
 /user/password:
-  put:
+  patch:
     tags:
       - 마이페이지
     summary: Update user password
@@ -190,7 +210,7 @@
         description: 변경 전 값과의 충돌
 
 /user/withdrawal:
-  put:
+  patch:
     tags:
       - 마이페이지
     summary: Update user status into withdrawal
@@ -356,7 +376,7 @@
               type: string
               example: "해당 신고가 존재하지 않습니다."
   
-/chats:
+/friends:
   get:
     tags:
       - 편지
@@ -383,7 +403,7 @@
               type: string
               example: "정상적인 토큰이 아닙니다."
 
-/chats/{chat_id}:
+/friends/{user_id}:
   get:
     tags:
       - 편지
@@ -419,7 +439,7 @@
             schema:
               type: string
               example: "해당 대화가 존재하지 않습니다."
-  put:
+  patch:
     tags:
       - 편지
     description: 대화 삭제
@@ -454,7 +474,7 @@
         description: chat_id
         required: true 
 
-/chats/{chat_id}/{letter_id}:
+/friends/{user_id}/{letter_id}:
   get:
     tags:
       - 편지
@@ -498,7 +518,7 @@
 /letter:
   get:
     tags:
-      - 편지
+      - 메인 화면
     description: 오고 있는 편지 조회
     operationId: getArrivingLetter
     parameters:
@@ -525,7 +545,7 @@
 /recommend:
   get:
     tags:
-      - 친구
+      - 메인 화면
     description: 추천된 친구 조회
     operationId: getRecommendedFriends
     parameters:
